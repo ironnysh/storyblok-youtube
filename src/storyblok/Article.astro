@@ -1,0 +1,37 @@
+---
+import {
+  storyblokEditable,
+  RichTextSchema,
+  renderRichText,
+} from "@storyblok/astro";
+import cloneDeep from "clone-deep";
+import "../utils/lite-youtube/lite-yt-embed.css";
+
+const { blok } = Astro.props;
+
+const mySchema = cloneDeep(RichTextSchema);
+const content = renderRichText(blok.content, {
+  schema: mySchema,
+  resolver: (component, blok) => {
+    switch (component) {
+      case "embed_youtube":
+        //console.log(blok);
+        const player = `<lite-youtube videoid=${blok.youtube_url} title=${blok.youtube_title}></lite-youtube>`;
+        const liteYT = player.replace("https://www.youtube.com/watch?v=", "");
+        //console.log(liteYT);
+        return `${liteYT}`;
+        break;
+      default:
+        return `Can't display the ${component} blok`;
+    }
+  },
+});
+---
+
+<article {...storyblokEditable(blok)}>
+  <h2>{blok.title}</h1>
+  <p>{blok.lead}</p>
+  <Fragment set:html={content} />
+</article>
+
+<script src="../utils/lite-youtube/lite-yt-embed.js"></script>

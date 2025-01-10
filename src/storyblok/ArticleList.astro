@@ -1,0 +1,34 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { useStoryblokApi } from "@storyblok/astro";
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get("cdn/stories", {
+  version: import.meta.env.DEV ? "draft" : "published",
+  content_type: "article",
+});
+
+const posts = data.stories.map((story) => {
+  return {
+    title: story.content.title,
+    lead: story.content.lead,
+    slug: story.full_slug,
+  };
+});
+
+const { blok } = Astro.props;
+---
+
+<ul {...storyblokEditable(blok)}>
+  {
+    posts.map((post) => (
+      <li>
+        <p>
+          <a href={post.slug}>{post.title}</a>
+        </p>
+        <p>{post.lead}</p>
+      </li>
+    ))
+  }
+</ul>
