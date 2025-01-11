@@ -14,10 +14,10 @@ const content = renderRichText(blok.content, {
   resolver: (component, blok) => {
     switch (component) {
       case "embed_youtube":
-        //console.log(blok);
-        const player = `<lite-youtube videoid=${blok.youtube_url} title=${blok.youtube_title}></lite-youtube>`;
+        // console.log(`The output of the ${component} blok is:`, blok);
+        const player = `<lite-youtube videoid=${blok.youtube_url} title="${blok.youtube_title}"></lite-youtube>`;
         const liteYT = player.replace("https://www.youtube.com/watch?v=", "");
-        //console.log(liteYT);
+        // console.log(`The output of liteYT is: ${liteYT}`);
         return `${liteYT}`;
         break;
       default:
