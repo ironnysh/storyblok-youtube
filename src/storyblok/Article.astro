@@ -5,7 +5,6 @@ import {
   renderRichText,
 } from "@storyblok/astro";
 import cloneDeep from "clone-deep";
-import "../utils/lite-youtube/lite-yt-embed.css";
 
 const { blok } = Astro.props;
 
@@ -22,16 +21,18 @@ const content = renderRichText(blok.content, {
         return `${liteYT}`;
         break;
       default:
-        return `Can't display the ${component} blok`;
+        return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
     }
   },
 });
 ---
 
 <article {...storyblokEditable(blok)}>
-  <h2>{blok.title}</h1>
+  <h2>{blok.title}</h2>
   <p>{blok.lead}</p>
   <Fragment set:html={content} />
 </article>
 
-<script src="../utils/lite-youtube/lite-yt-embed.js"></script>
+<script>
+  import "../scripts/lite-yt-embed.js";
+</script>
