@@ -4,7 +4,7 @@ Take home task for a Technical Writer position.
 
 **Author:** Ronny Shani
 
-[Click here to see a live demo of the site.](https://storyblok-youtube.vercel.app)
+[Live demo of the site](https://storyblok-youtube.vercel.app).
 
 ## Table of Contents
 
@@ -447,7 +447,6 @@ default:
 You might recall that Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but doesn’t render them automatically. In the Storyblok UI, open the article, and add a **Teaser** block.
 
 After you hit **Save** and reload the **Visual Editor** on the left, you’ll see the error displayed:
-==screenshot: Storyblok_UI_Richtext-error.png==.
 
 To prevent this error message from appearing in the **Visual Editor**, limit which **Nestable** blocks are allowed:
 
@@ -456,8 +455,6 @@ To prevent this error message from appearing in the **Visual Editor**, limit whi
 3. Select **Component(s)**.
 4. Click the **Choose components** dropdown on the bottom and select the ones allowed.
 5. Click **Save & Back to Fields**.
-
-==screenshot: Storyblok_UI_Richtext-limit.png==
 
 ## Conclusion
 
