@@ -210,19 +210,17 @@ To create these two blocks, navigate to the **Block Library** in your Storyblok 
 1. Click **+ New Block**, name it `embed_youtube`, and click **Add Block**.
 
 > [!TIP]
-> When you name blocks and fields, use underscores (_). For example, `embed_youtube`.
-
-> [!TIP]
 > The default block type is **Nestable block**, which is what you need.
 
-YouTube supports [multiple parameters](https://developers.google.com/youtube/player_parameters#Parameters) that let you customize an embedded video, including start and end time, player controls, and more.
+YouTube supports [multiple parameters](https://developers.google.com/youtube/player_parameters#Parameters) that let you customize an embedded video, including start and end time, player controls, and more. Add two fields for the essential parameters, URL and title:
 
-Add two fields for the essential parameters: URL and title: 3. In the **Edit** window, create a **Text** field named `youtube_url`, and click **Add**. 4. Create another **Text** field named `youtube_title`, and click **Add**.
+2. In the **Edit** window, create a **Text** field named `youtube_url`, and click **Add**.
+3. Create another **Text** field named `youtube_title`, and click **Add**.
 
 > [!TIP]
 > The default field type is **Text**, which is what you need.
 
-5. Click **Save**.
+4. Click **Save**.
 
 **Optional:** Depending on your needs, you can define either or both fields as a **Required field**, add description labels for editors, default values, and more. To configure these properties, click on the field.
 
@@ -251,7 +249,7 @@ To embed a YouTube video as a standalone block—in a landing page or other, fol
 1. Navigate to the **Content** section.
 2. Click **+ Create new content > Story**.
 3. Name it and click **Create**.
-4. Hover over the list of blocks on the right sidebar, and click the round **+** button.
+4. Hover over the list of blocks on the right sidebar, and click the round + button.
 5. Fill in the details in the two fields you have created before: The video URL and its title.
 6. Click **Save**.
 
@@ -289,7 +287,7 @@ We will use the [**Astro Embed**](https://astro-embed.netlify.app/)’s [YouTube
 As you may know, loading external resources, such as videos, affects your site’s performance. Furthermore, your visitors might not watch the video at all, causing useless energy and data consumption. **Astro Embed** helps prevent both issues.
 
 > [!TIP]
-> While all major browsers [support lazy loading](https://caniuse.com/loading-lazy-attr) of `iframe` HTML elements, this attribute leaves the decision of when to load the video with the browser, _not the user_.
+> While all major browsers [support lazy loading](https://caniuse.com/loading-lazy-attr) of `iframe` HTML elements, this attribute leaves the decision of when to load the video to the browser, _not the user_.
 
 You can add as many embedded videos as you'd like without worrying about performance. The player only becomes interactive once a user clicks it, so YouTube’s scripts will not affect the page loading speed or your site visitors’ experience.
 
@@ -308,7 +306,7 @@ The next step is to register the blocks as Astro components.
 
 ### The Astro config
 
-Open your project’s configuration file (usually `astro.config.mjs`) and add the `embed_youtube` block and the `article` block below your previously-registered components:
+Open your project’s configuration file (usually `astro.config.mjs`) and add the `embed_youtube` block and the `article` block below the other components:
 
 ```js
 Filename: astro.config.mjs
@@ -347,7 +345,7 @@ const { blok } = Astro.props;
 
 ```
 
-Remember that the `{X.youtube_url}` and `{X.youtube_title}` variables must match the corresponding **Text** fields names you’ve defined in Storyblok.
+Remember that the `{blok.youtube_url}` and `{blok.youtube_title}` variables must match the corresponding **Text** fields names you’ve defined in Storyblok.
 
 > [!NOTE]
 > The `<YouTube>` component supports several props besides the required `id`. To learn more, [consult the official documentation](https://astro-embed.netlify.app/components/youtube/).
@@ -444,33 +442,34 @@ default:
         return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
 ```
 
-You might recall that Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but doesn’t render them automatically. In the Storyblok UI, open the article, and add a **Teaser** block.
+You might recall that Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but doesn’t render them automatically. Here’s a demonstration: In the Storyblok UI, open the article, and add a **Teaser** block.
 
-After you hit **Save** and reload the **Visual Editor** on the left, you’ll see the error displayed:
+After you hit **Save** and reload the **Visual Editor**, you’ll see the error displayed:
 
 To prevent this error message from appearing in the **Visual Editor**, limit which **Nestable** blocks are allowed:
 
 1. Navigate to the **Block Library** in your Storyblok Space.
 2. Select **Allow only specific components to be inserted > Component(s)**.
-3. Select **Component(s)**.
 4. Click the **Choose components** dropdown on the bottom and select the ones allowed.
 5. Click **Save & Back to Fields**.
 
 ## Conclusion
 
-Once the files are in place, and you've connected all the moving parts, it’s time to test drive your creation.
+Once the files are in place, and you've connected all the moving parts, it’s time to test your creation.
 
-Run `npm run dev` in your terminal and open your Storyblok dashboard or preview site. Click around and ensure the videos are loading properly.
+Run `npm run dev` in your terminal and open your Storyblok dashboard or preview site. Click around to ensure the videos are loading properly.
+
+Well Done!
 
 > [!NOTE]
-> This tutorial explains how to embed YouTube videos with Astro. If you need to embed elements from other platforms or use other frameworks, refer to these resources:
+> Learn how to embed elements from other platforms or use other frameworks:
 > - [How to create embedded StackBlitz blocks with Nuxt and Vue](https://www.storyblok.com/tp/how-to-create-embedded-blocks-as-a-way-of-integration)
 > - [How to add YouTube to Storyblok with the JavaScript SDK](https://www.storyblok.com/tp/add-youtube-to-headless-cms)
 > - [How to embed Vimeo videos in Storyblok using a custom fields plugin](https://www.storyblok.com/tp/how-to-add-vimeo-video-headless-cms)
 > - [Embedding media in a Laravel Storyblok project](https://ls.sirric.co.uk/docs/2.9/embedding-media)
 > - [Discover the official Storyblok Richtext package](https://www.storyblok.com/mp/announcing-official-storyblok-richtext-package)
 
-Consider subscribing to [our YouTube channel](https://www.youtube.com/c/Storyblok-com), to get more ideas for more inspiring web projects. Coupled with an Astro frontend, Storyblok delivers unlimited possibilities to experiment, extend, and innovate. What will you create next?
+Coupled with an Astro frontend, Storyblok delivers unlimited possibilities to experiment, extend, and innovate. What will you create next?
 
 ---
 
