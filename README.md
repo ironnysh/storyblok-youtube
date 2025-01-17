@@ -56,7 +56,7 @@ To save time on manually recreating the schema, use the Storyblok CLI ([see inst
 
 ## Blocks JSON schema
 
-You can import the blocks schema used in this tutorial into your space or recreate the blocks yourself in the Storyblok dashboard.
+You can import the blocks schema used in this tutorial into your Space or recreate the blocks yourself in the Storyblok dashboard.
 
 To import the schema, install the [Storyblok CLI](https://github.com/storyblok/storyblok-cli#push-components) package, and use [the ￼`push-components`￼ command](https://github.com/storyblok/storyblok-cli#push-components), like so:
 
@@ -74,7 +74,7 @@ This is the complete schema:
 Filename: storyblok-youtube-components.json
 
 {
-  "tutorial-bloks": [
+  "components": [
     {
       "name": "article",
       "display_name": "Article",
@@ -183,30 +183,30 @@ Filename: storyblok-youtube-components.json
 
 ## The tutorial
 
-From landing pages to eCommerce to corporate blogs—a headless content management system (CMS) like Storyblok allows you to create any type of website. And no matter how simple or complex they are, what most online projects have in common is the need to feature multimedia: Images, embedded videos, third-party
+From landing pages to eCommerce to corporate blogs—a headless content management system (CMS) like Storyblok allows you to create any type of website. And no matter how simple or complex they are, what most online projects have in common is the need to feature multimedia: Images, embedded videos, and other third-party components.
 
 YouTube, the world’s leading video platform, provides an endless source of quality videos. How would you go about presenting them on your site? That's exactly what you’ll learn in this tutorial.
 
 ## What will you build
 
-A small Storyblok website with an Astro frontend that includes the following:
+A small Storyblok site with an Astro frontend that includes the following:
 
-1. A blok that allows you to embed a YouTube video
+1. A block that allows you to embed a YouTube video
 2. A block that includes a Richtext field in which you can embed YouTube videos
 
-Here’s a demo of the final website. You can find the complete code on GitHub.
+Here's a [live demo of the website](https://storyblok-youtube.vercel.app). You can find the complete [code on GitHub](https://github.com/ironnysh/storyblok-youtube).
 
 ## Prerequisites
 
-- A [Storyblok](http://app.storyblok.com/) space; preferably new.
-- An Astro frontend connected to this space.
+- A [Storyblok](http://app.storyblok.com/) Space; preferably new.
+- An Astro frontend connected to this Space.
 
 > [!NOTE]
 > If you’re new to Astro, check out [The Storyblok Astro Ultimate Tutorial](https://www.storyblok.com/tp/the-storyblok-astro-ultimate-tutorial)
 
 ## Set up your Storyblok blocks
 
-The first thing you need to do is create two blocks in your space:
+The first thing you need to do is create two blocks in your Space:
 
 - The YouTube embed block: a **Nestable block** that works both as a standalone block and a component you can insert into [the **Richtext** field](https://www.storyblok.com/docs/richtext-field).
 - The article block: a **Content type** block that includes a **Richtext** field.
@@ -220,7 +220,7 @@ To create these two blocks, navigate to the **Block Library** in your Storyblok 
 > [!TIP]
 > The default block type is **Nestable block**, which is what you need.
 
-YouTube supports [multiple parameters](https://developers.google.com/youtube/player_parameters#Parameters) that let you customize an embedded video, including start and end time, player controls, and more. Add two fields for the essential parameters, URL and title:
+YouTube supports [multiple parameters](https://developers.google.com/youtube/player_parameters#Parameters) that let you customize an embedded video, including start and end time, player controls, and more. Add two fields for the essential parameters—URL and title:
 
 2. In the **Edit** window, create a **Text** field named `youtube_url`, and click **Add**.
 3. Create another **Text** field named `youtube_title`, and click **Add**.
@@ -250,38 +250,38 @@ Let’s continue to the other block.
 
 The `embed_youtube` block you’ve just created is a **Nestable block** that works both as a standalone block and a component supported in [the **Richtext** field](https://www.storyblok.com/docs/richtext-field).
 
-To embed a YouTube video as a standalone block—in a landing page or other, follow the steps below. To insert it into a **Richtext** field, skip to the [Insert the block into a rich text editor](bear://x-callback-url/open-note?id=808DFD5F-D744-4086-B7FE-719E9DF43CE4&header=Insert%20the%20block%20into%20a%20Richtext%20editor) section:
+To embed a YouTube video as a standalone block—in a landing page or other—follow the steps below. To insert it into a **Richtext** field, skip to the [Insert the block into a rich text editor](#insert-the-block-into-a-rich-text-editor) section:
 
 ### Add the standalone block to a page
 
 1. Navigate to the **Content** section.
 2. Click **+ Create new content > Story**.
 3. Name it and click **Create**.
-4. Hover over the list of blocks on the right sidebar, and click the round + button.
-5. Fill in the details in the two fields you have created before: The video URL and its title.
+4. Hover over the list of blocks on the right sidebar, and click the round **+** button to add the block.
+5. Fill in the details in the two fields you've created before: The video URL and its title.
 6. Click **Save**.
 
 ### Insert the block into a rich text editor
 
 1. Navigate to the **Content** section.
 2. Click **+ Create new content > Story**.
-3. Name it and click the **Content type** dropdown on the bottom to set it to an **Article** content type.
+3. Name it and click the **Content type** dropdown at the bottom to set it to an **Article** content type.
 4. Click **Create**.
-5. Add a title and lead, and type some text in the **Content** field.
-6. Click inside the **Richtext** field, and position your cursor where you would like to add a video.
+5. Fill in the title and lead, and type some text in the **Content** field.
+6. Click inside the **Richtext** field, and position your cursor where you'd like to add a video.
 7. Click the **Add Block** icon and select the `embed_youtube` block you created before.
 8. Click the block you inserted and fill in the details in the two fields: The video URL and its title.
 9. Click **Save**.
 
 ## Intermission
 
-Now that we’re halfway through, let’s take a short pause for a recap. If you completed the steps above, you have two new Storyblok blocks—one for the video embed and one that allows you to feature it inside Storyblok’s **Richtext** editor.
+Now that we’re halfway through, let’s pause for a recap. If you completed the steps above, you have two new Storyblok blocks—one for the video embed and one that allows you to feature it inside Storyblok’s **Richtext** editor.
 
-You’ve also created two new stories—a landing page and an article—and added the video embed into both of these stories.
+You’ve also created two new Stories—a landing page and an article—and added the video embed into both stories.
 
-Congratulate yourself and take a few minutes to make sure everything’s in order.
+Wonderful! Congratulate yourself and take a few minutes to make sure everything’s in order.
 
-You might notice that even if you reload the preview area of the **Visual Editor**, you don’t see the videos, or worse, are greeted with an Astro error message. That’s because you need to configure these new Storyblok blocks in your frontend.
+You might notice that even if you reload the preview area of the **Visual Editor**, you don’t see the videos, or worse, are greeted with an Astro error message. That’s because you need to configure these new Storyblok blocks in your frontend code.
 
 Let’s do that. Launch your code editor and open your Astro project.
 
@@ -295,7 +295,7 @@ We will use the [**Astro Embed**](https://astro-embed.netlify.app/)’s [YouTube
 As you may know, loading external resources, such as videos, affects your site’s performance. Furthermore, your visitors might not watch the video at all, causing useless energy and data consumption. **Astro Embed** helps prevent both issues.
 
 > [!TIP]
-> While all major browsers [support lazy loading](https://caniuse.com/loading-lazy-attr) of `iframe` HTML elements, this attribute leaves the decision of when to load the video to the browser, _not the user_.
+> While all major browsers [support lazy loading](https://caniuse.com/loading-lazy-attr) of `iframe` HTML elements, this attribute leaves the decision of _when_ to load the video to the browser, _not the user_.
 
 You can add as many embedded videos as you'd like without worrying about performance. The player only becomes interactive once a user clicks it, so YouTube’s scripts will not affect the page loading speed or your site visitors’ experience.
 
@@ -310,7 +310,7 @@ Before you begin, install the following NPM packages:
 npm install --save-dev @astro-community/astro-embed-youtube clone-deep
 ```
 
-The next step is to register the blocks as Astro components.
+The next step is to register the blocks as components in Astro.
 
 ### The Astro config
 
@@ -328,16 +328,16 @@ components: {
 
 ```
 
-Finally, let’s create the actual components.
+Finally, let’s add the code of the actual components.
 
 ## Create the Astro components
 
-Create two new files in your `src/stroyblok` directory:
+Create two new files in your `src/storyblok` directory:
 
 - `Youtube.astro`
 - `Article.astro`
 
-### The `<YouTube>` Astro component
+### The `<Youtube>` Astro component
 
 The code below integrates the **Astro Embed** component with your Storyblok `embed_youtube` block:
 
@@ -353,25 +353,25 @@ const { blok } = Astro.props;
 
 ```
 
-Remember that the `{blok.youtube_url}` and `{blok.youtube_title}` variables must match the corresponding **Text** fields names you’ve defined in Storyblok.
+Remember that the `{blok.youtube_url}` and `{blok.youtube_title}` variables must match the corresponding [**Text** fields names you defined in Storyblok](#create-a-nestable-block).
 
 > [!NOTE]
-> The `<YouTube>` component supports several props besides the required `id`. To learn more, [consult the official documentation](https://astro-embed.netlify.app/components/youtube/).
+> The `<YouTube>` component supports several props besides the required `id`. To learn more, [refer to the official documentation](https://astro-embed.netlify.app/components/youtube/).
 
 ### The `<Article>` Astro component
 
-Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but it doesn’t render them automatically. The `iframe` is one of the native HTML elements that are still not supported out of the box.
+Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but it doesn’t automatically render them. The `iframe` is one of the native HTML elements that are still not supported out of the box.
 
-To be able to display the embedded video in Storyblok’s **Visual Editor** (and on the site), you’d need to adapt the default **Richtext** field’s schema using the `renderRichText` function available in [Storyblok’s Astro SDK](https://github.com/storyblok/storyblok-astro).
+To display the embedded video in Storyblok’s **Visual Editor** (and on the site), you’d need to adapt the default **Richtext** field’s schema using the `renderRichText` function available in [Storyblok’s Astro SDK](https://github.com/storyblok/storyblok-astro).
 
 ### Swap the Astro component with native HTML
 
 The `renderRichText` function only parses native HTML elements included in the rich text editor; and does not map custom Storyblok **Nestable** blocks to Astro components. You’d need a third-party package for that.
 
-To avoid unnecessary dependencies, keep the component lean, and have the added benefit of accommodating other frameworks, we use the built-in `RichTextSchema` function to adapt the schema with the JavaScript [String.prototype.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method.
+To avoid unnecessary dependencies, keep the component lean, and have the added benefit of accommodating other frameworks, we use the built-in `RichTextSchema` function. This lets us adapt the schema with the JavaScript [String.prototype.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method.
 
 > [!TIP]
-> Customizing multiple elements of the **Richtext** field’s schema leads to complex code that’s hard to maintain. If your use case has a wider scope than this tutorial, check the [Storyblok Rich Text Renderer for Astro](https://github.com/NordSecurity/storyblok-rich-text-astro-renderer) package or the [recently-launched Storyblok Richtext](https://www.storyblok.com/mp/announcing-official-storyblok-richtext-package) package.==
+> Customizing multiple elements of the **Richtext** field’s schema leads to complex code that’s hard to maintain. If your use case has a wider scope than this tutorial, check the [Storyblok Rich Text Renderer for Astro](https://github.com/NordSecurity/storyblok-rich-text-astro-renderer) package or the [recently-launched Storyblok Richtext](https://www.storyblok.com/mp/announcing-official-storyblok-richtext-package) package.
 
 Since we opted for the built-in alternative, we cannot use the `<YouTube>` component. However, 
 self-imposed limits can have positive outcomes: **Astro Embed** bundles the original [`lite-youtube-embed`](https://github.com/paulirish/lite-youtube-embed) custom element. This means that we can swap the unsupported Astro component with the `<lite-youtube>` HTML element.
@@ -393,18 +393,25 @@ Filename: Article.astro
 ---
 import {
   storyblokEditable,
+  // Step 1. //
   RichTextSchema,
   renderRichText,
 } from "@storyblok/astro";
+// Step 2. //
 import cloneDeep from "clone-deep";
 
 const { blok } = Astro.props;
 
+// Step 3. //
 const mySchema = cloneDeep(RichTextSchema);
+
+// Step 4. //
 const content = renderRichText(blok.content, {
   schema: mySchema,
   resolver: (component, blok) => {
     switch (component) {
+
+      // Step 5. //
       case "embed_youtube":
         // console.log(`The output of the ${component} blok is:`, blok);
         const player = `<lite-youtube videoid=${blok.youtube_url} title="${blok.youtube_title}"></lite-youtube>`;
@@ -425,10 +432,10 @@ const content = renderRichText(blok.content, {
   <Fragment set:html={content} />
 </article>
 
+// Step 6. //
 <script>
   import "../scripts/lite-yt-embed.js";
 </script>
-
 
 ```
 
@@ -439,7 +446,7 @@ The [`lite-youtube-embed`](https://github.com/paulirish/lite-youtube-embed) pack
 
 **Astro Embed** loads the relevant stylesheet for you, but you’d need to load the required JavaScript file in `Article.astro`.
 
-To do that, copy the file `lite-yt-embed.js` from the `node_modules/lite-youtube-embed/src` directory into your `src/scripts` directory, and import it as demonstrated in the snippet above.
+To do that, copy the file `lite-yt-embed.js` from the `node_modules/lite-youtube-embed/src` directory into your `src/scripts` directory, and import it as demonstrated in the snippet above (**Step 6.**).
 
 ### Limit which Nestable blocks are allowed
 
@@ -450,22 +457,23 @@ default:
         return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
 ```
 
-You might recall that Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but doesn’t render them automatically. Here’s a demonstration: In the Storyblok UI, open the article, and add a **Teaser** block.
+You might recall that Storyblok’s **Richtext** field allows you to insert **Nestable** blocks, but it doesn’t automatically render them. To illustrate what that means, return to the Storyblok UI, open the article, and add a **Teaser** block into the **Richtext** field.
 
-After you hit **Save** and reload the **Visual Editor**, you’ll see the error displayed:
+After you hit **Save** and reload, you’ll see the error displayed in the **Visual Editor**:
 
-To prevent this error message from appearing in the **Visual Editor**, limit which **Nestable** blocks are allowed:
+To prevent this message from appearing in the **Visual Editor**, limit which **Nestable** blocks are allowed:
 
 1. Navigate to the **Block Library** in your Storyblok Space.
-2. Select **Allow only specific components to be inserted > Component(s)**.
-4. Click the **Choose components** dropdown on the bottom and select the ones allowed.
+2. Click the `article` block, then the `content` field.
+3. Scroll down and select **Allow only specific components to be inserted > Component(s)**.
+4. Click the **Choose components** dropdown at the bottom and select the ones allowed.
 5. Click **Save & Back to Fields**.
 
 ## Conclusion
 
 Once the files are in place, and you've connected all the moving parts, it’s time to test your creation.
 
-Run `npm run dev` in your terminal and open your Storyblok dashboard or preview site. Click around to ensure the videos are loading properly.
+Run `npm start` in the terminal and open your Storyblok dashboard or preview site. Click around to ensure the videos are loading properly.
 
 Well Done!
 
@@ -481,4 +489,4 @@ Coupled with an Astro frontend, Storyblok delivers unlimited possibilities to ex
 
 ---
 
-Thanks for reading! I hope you enjoyed :-)
+Thanks for reading! I hope you enjoyed it :-)

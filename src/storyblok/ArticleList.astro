@@ -9,7 +9,7 @@ const { data } = await storyblokApi.get("cdn/stories", {
   content_type: "article",
 });
 
-const posts = data.stories.map((story) => {
+const articles = data.stories.map((story) => {
   return {
     title: story.content.title,
     lead: story.content.lead,
@@ -22,12 +22,12 @@ const { blok } = Astro.props;
 
 <ul {...storyblokEditable(blok)}>
   {
-    posts.map((post) => (
+    articles.map((article) => (
       <li>
         <p>
-          <a href={post.slug}>{post.title}</a>
+          <a href={article.slug}>{article.title}</a>
         </p>
-        <p>{post.lead}</p>
+        <p>{article.lead}</p>
       </li>
     ))
   }
