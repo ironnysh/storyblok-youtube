@@ -20,6 +20,9 @@ To replicate the directory structure of this repository, make sure you create al
 
 To save time on manually recreating the schema, use the Storyblok CLI ([see instructions below](#blocks-json-schema)).
 
+<details>
+<summary>Tree view</summary>
+
 ```bash
 
 ├── astro.config.mjs
@@ -49,6 +52,7 @@ To save time on manually recreating the schema, use the Storyblok CLI ([see inst
 └── storyblok-youtube-components.json
 
 ```
+</details>
 
 ## Blocks JSON schema
 
@@ -61,6 +65,9 @@ storyblok push-components storyblok-youtube-components.json --space <YOUR_SPACE_
 ```
 
 This is the complete schema:
+
+<details>
+<summary>Schema</summary>
 
 ```json
 
@@ -172,6 +179,7 @@ Filename: storyblok-youtube-components.json
 }
 
 ```
+</details>
 
 ## The tutorial
 
