@@ -16,6 +16,6 @@
     "@vitejs/plugin-basic-ssl": "^1.2.0",
     "astro": "^5.1.6",
     "clone-deep": "^4.0.1",
-    "vite": "^6.0.7"
+    "vite": "^8.2.2"
   }
 }
