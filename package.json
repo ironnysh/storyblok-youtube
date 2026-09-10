@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.6",
-    "@storyblok/astro": "^5.1.2",
+    "@storyblok/astro": "^10.3.1",
     "@vitejs/plugin-basic-ssl": "^1.2.0",
     "astro": "^5.1.6",
     "clone-deep": "^4.0.1",
