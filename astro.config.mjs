@@ -19,11 +19,14 @@ export default defineConfig({
       components: {
         article: "storyblok/Article",
         articleList: "storyblok/ArticleList",
+        article_overview: "storyblok/ArticleOverview",
         page: "storyblok/Page",
         teaser: "storyblok/Teaser",
-        config: 'storyblok/Config',
-        embed_youtube: 'storyblok/Youtube'
+        config: "storyblok/Config",
+        embed_youtube: "storyblok/Youtube",
       },
+      enableFallbackComponent: true,
+      customFallbackComponent: "storyblok/Fallback",
     }),
   ],
   vite: {

@@ -1,0 +1,7 @@
+---
+const { blok } = Astro.props;
+---
+
+<div data-missing-component={blok?.component ?? "unknown"}>
+  <p>Unsupported Storyblok component: {blok?.component ?? "unknown"}</p>
+</div>
