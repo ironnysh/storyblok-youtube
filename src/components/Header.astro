@@ -1,11 +1,13 @@
 ---
 import { useStoryblokApi } from "@storyblok/astro";
+
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/stories/config", {
   version: "draft",
   resolve_links: "url",
 });
-const headerMenu = data?.story?.content?.header_menu;
+
+const headerMenu = data?.story?.content?.header_menu ?? [];
 ---
 
 <header>
@@ -15,7 +17,9 @@ const headerMenu = data?.story?.content?.header_menu;
   <nav>
     {
       headerMenu.map((menu) => (
-        <a href={`/${menu.link.cached_url}`}>{menu.link.story.name}</a>
+        <a href={`/${menu?.link?.cached_url ?? ""}`}>
+          {menu?.link?.story?.name ?? "Menu item"}
+        </a>
       ))
     }
   </nav>
