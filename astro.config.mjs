@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import storyblok from "@storyblok/astro";
+import { storyblok } from "@storyblok/astro";
 import { loadEnv } from "vite";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 
