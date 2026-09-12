@@ -1,6 +1,13 @@
 ---
 import ArticleList from "./ArticleList.astro";
+import { storyblokEditable } from "@storyblok/astro";
 const { blok } = Astro.props;
 ---
+
+<section {...storyblokEditable(blok)}>
+	<h2>
+		{blok.title}
+	</h2>
+</section>
 
 <ArticleList blok={blok} />
