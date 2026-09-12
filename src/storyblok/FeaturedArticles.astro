@@ -1,0 +1,21 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+const { blok } = Astro.props;
+const articles = blok.articles;
+---
+
+<section {...storyblokEditable(blok)}>
+	<h2>Featured articles</h2>
+	<ul>
+		{
+			articles.map((article) => (
+				<li>
+					<p>
+						<a href={article.full_slug}>{article.content.title}</a>
+					</p>
+					<p>{article.content.lead}</p>
+				</li>
+			))
+		}
+	</ul>
+</section>

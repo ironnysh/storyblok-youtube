@@ -1,5 +1,6 @@
 # build output
 dist/
+.vercel
 
 # generated types
 .astro/
@@ -13,10 +14,7 @@ npm-debug.log*
 
 # environment variables
 .env
-.env.production
 
 # macOS-specific files
 .DS_Store
 
-# Visual Studio Code
-.vscode

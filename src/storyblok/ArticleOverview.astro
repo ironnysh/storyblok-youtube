@@ -1,13 +1,20 @@
 ---
-import ArticleList from "./ArticleList.astro";
-import { storyblokEditable } from "@storyblok/astro";
-const { blok } = Astro.props;
+import { useStoryblokApi, storyblokEditable } from "@storyblok/astro";
+
+const storyblokApi = useStoryblokApi();
+const articles = await storyblokApi.getAll("cdn/stories", {
+	version: "draft",
+	starts_with: "articles",
+	content_type: "article",
+});
 ---
 
-<section {...storyblokEditable(blok)}>
-	<h2>
-		{blok.title}
-	</h2>
-</section>
-
-<ArticleList blok={blok} />
+<ul>
+	{
+		articles.map((article) => (
+			<li>
+				<a href={article.slug}>{article.content.title}</a>
+			</li>
+		))
+	}
+</ul>

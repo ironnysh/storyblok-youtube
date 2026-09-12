@@ -1,25 +1,27 @@
 import { defineConfig } from "astro/config";
 import { storyblok } from "@storyblok/astro";
 import { loadEnv } from "vite";
-import basicSsl from "@vitejs/plugin-basic-ssl";
+import mkcert from 'vite-plugin-mkcert'
+import vercel from '@astrojs/vercel';
 
 const env = loadEnv("", process.cwd(), "STORYBLOK");
+const { STORYBLOK_DELIVERY_API_TOKEN} = loadEnv(import.meta.env.MODE, process.cwd(), "");
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     storyblok({
-      accessToken: env.STORYBLOK_TOKEN,
-      apiOptions: {
-        region: "",
-      },
+      accessToken: env.STORYBLOK_DELIVERY_API_TOKEN,
+      livePreview: true,
       bridge: {
-        customParent: "https://app.storyblok.com",
+        resolveRelations: ['featured-articles.articles'],
+      },
+      apiOptions: {
+        region: "eu",
       },
       components: {
         article: "storyblok/Article",
-        articleList: "storyblok/ArticleList",
         article_overview: "storyblok/ArticleOverview",
+        featured_articles: "storyblok/FeaturedArticles",
         page: "storyblok/Page",
         teaser: "storyblok/Teaser",
         config: "storyblok/Config",
@@ -29,10 +31,10 @@ export default defineConfig({
       customFallbackComponent: "storyblok/Fallback",
     }),
   ],
+  output: 'server',
+  adapter: vercel(),
   vite: {
-    plugins: [basicSsl()],
-    server: {
-      https: true,
-    },
+    plugins: [ mkcert() ],
+    
   },
 });
