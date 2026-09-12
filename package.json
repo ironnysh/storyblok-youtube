@@ -11,7 +11,7 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astro-community/astro-embed-youtube": "^0.5.6",
+    "@astro-community/astro-embed-youtube": "^0.5.10",
     "@storyblok/astro": "^10.3.1",
     "@vitejs/plugin-basic-ssl": "^2.3.0",
     "astro": "^7.3.1",
