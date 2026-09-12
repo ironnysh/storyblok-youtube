@@ -3,36 +3,36 @@ import { useStoryblokApi } from "@storyblok/astro";
 
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/stories/config", {
-  version: "draft",
-  resolve_links: "url",
+	version: "draft",
+	resolve_links: "url",
 });
 
-const headerMenu = data?.story?.content?.header_menu ?? [];
+const headerMenu = data?.story?.content?.header_nav ?? [];
 ---
 
 <header>
-  <a href="/">
-    <h1>Storyblok + Astro</h1>
-  </a>
-  <nav>
-    {
-      headerMenu.map((menu) => (
-        <a href={`/${menu?.link?.cached_url ?? ""}`}>
-          {menu?.link?.story?.name ?? "Menu item"}
-        </a>
-      ))
-    }
-  </nav>
+	<a href="/">
+		<h1>Storyblok + Astro</h1>
+	</a>
+	<nav>
+		{
+			headerMenu.map((nav_item) => (
+				<a href={`/${nav_item?.link?.cached_url ?? ""}`}>
+					{nav_item?.link?.story?.name ?? "Menu item"}
+				</a>
+			))
+		}
+	</nav>
 </header>
 <style>
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-  nav {
-    display: flex;
-    gap: 1rem;
-  }
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+	}
+	nav {
+		display: flex;
+		gap: 1rem;
+	}
 </style>
