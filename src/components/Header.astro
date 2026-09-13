@@ -8,6 +8,11 @@ const { data } = await storyblokApi.get("cdn/stories/config", {
 });
 
 const headerMenu = data?.story?.content?.header_nav ?? [];
+
+const getHref = (link) => {
+	const url = link?.story?.url ?? "";
+	return url === "/" ? "/" : `/${url}`;
+};
 ---
 
 <header>
@@ -17,7 +22,7 @@ const headerMenu = data?.story?.content?.header_nav ?? [];
 	<nav>
 		{
 			headerMenu.map((nav_item) => (
-				<a href={`/${nav_item?.link?.cached_url ?? ""}`}>
+				<a href={getHref(nav_item?.link)}>
 					{nav_item?.link?.story?.name ?? "Menu item"}
 				</a>
 			))
