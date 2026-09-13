@@ -1,17 +1,17 @@
 ---
 import Header from "../components/Header.astro";
-import "/src/styles/global.css"
+import "/src/styles/global.css";
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Embed a YouTube video in Storyblok with Astro</title>
-    <meta name="generator" content={`${Astro.generator} + Storyblok`} />
-  </head>
-  <body>
-    <Header />
-    <slot />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Embed a YouTube video in Storyblok with Astro</title>
+		<meta name="generator" content={`${Astro.generator} + Storyblok`} />
+	</head>
+	<body>
+		<Header />
+		<slot />
+	</body>
 </html>
