@@ -13,7 +13,7 @@ export default defineConfig({
       accessToken: env.STORYBLOK_DELIVERY_API_TOKEN,
       livePreview: true,
       bridge: {
-        resolveRelations: ['featured-articles.articles'],
+        resolveRelations: ['featured_articles.articles'],
       },
       apiOptions: {
         region: "eu",
