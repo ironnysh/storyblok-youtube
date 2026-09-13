@@ -31,7 +31,7 @@ export default defineConfig({
       customFallbackComponent: "storyblok/Fallback",
     }),
   ],
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
   vite: {
     plugins: [ mkcert() ],
