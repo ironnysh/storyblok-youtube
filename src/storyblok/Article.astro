@@ -1,35 +1,32 @@
 ---
-import {
-  storyblokEditable,
-  renderRichText,
-} from "@storyblok/astro";
+import { storyblokEditable, renderRichText } from "@storyblok/astro";
 import "lite-youtube-embed/src/lite-yt-embed.css";
 
 const { blok } = Astro.props;
 
 const content = renderRichText(blok.content, {
-  renderers: {
-    blok: ({ attrs }) => {
-      const embeddedBlok = attrs?.body?.[0];
-      const component = embeddedBlok?.component;
+	renderers: {
+		blok: ({ attrs }) => {
+			const embeddedBlok = attrs?.body?.[0];
+			const component = embeddedBlok?.component;
 
-      if (component === "embed_youtube" && embeddedBlok) {
-        const player = `<lite-youtube videoid=${embeddedBlok.youtube_url} title="${embeddedBlok.youtube_title}"></lite-youtube>`;
-        return player.replace("https://www.youtube.com/watch?v=", "");
-      }
+			if (component === "embed_youtube" && embeddedBlok) {
+				const player = `<lite-youtube videoid=${embeddedBlok.youtube_url} title="${embeddedBlok.youtube_title}"></lite-youtube>`;
+				return player.replace("https://www.youtube.com/watch?v=", "");
+			}
 
-      return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
-    },
-  },
+			return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
+		},
+	},
 });
 ---
 
 <article {...storyblokEditable(blok)}>
-  <h2>{blok.title}</h2>
-  <p>{blok.lead}</p>
-  <Fragment set:html={content} />
+	<h2>{blok.title}</h2>
+	<p>{blok.lead}</p>
+	<Fragment set:html={content} />
 </article>
 
 <script>
-  import "../scripts/lite-yt-embed.js";
+	import "../scripts/lite-yt-embed.js";
 </script>
