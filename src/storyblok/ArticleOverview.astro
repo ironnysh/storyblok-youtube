@@ -1,6 +1,8 @@
 ---
 import { useStoryblokApi, storyblokEditable } from "@storyblok/astro";
 
+const { blok } = Astro.props;
+
 const storyblokApi = useStoryblokApi();
 const articles = await storyblokApi.getAll("cdn/stories", {
 	version: "draft",
