@@ -3,6 +3,26 @@ import { useStoryblokApi, getPayload } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+export const prerender = true;
+
+export async function getStaticPaths() {
+	const storyblokApi = useStoryblokApi();
+	const { data } = await storyblokApi.get("cdn/links", {
+		version: "draft",
+	});
+
+	const links = data ? Object.values(data.links) : [];
+
+	return links
+		.filter((link) => !link.is_folder)
+		.map((link) => {
+			const slug = link.slug === "home" ? undefined : link.slug;
+			return {
+				params: { slug },
+			};
+		});
+}
+
 const payload = await getPayload({
 	locals: Astro.locals,
 });
@@ -16,7 +36,7 @@ const story =
 	(
 		await storyblokApi.get(`cdn/stories/${slug || "home"}`, {
 			version: "draft",
-			resolve_relations: "featured-articles.articles",
+			resolve_relations: "featured_articles.articles",
 		})
 	).data.story;
 ---
