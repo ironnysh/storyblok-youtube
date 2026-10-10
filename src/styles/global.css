@@ -46,3 +46,7 @@ mark {
     margin-block-start: 1rem;
     padding-block: .5rem;
 }
+
+button {
+    touch-action: manipulation;
+}
