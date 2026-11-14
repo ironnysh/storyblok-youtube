@@ -1,11 +1,16 @@
 ---
-import { useStoryblokApi } from "@storyblok/astro";
+import { apiClient, StoryblokBlock } from "../storyblok";
 
-const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/config", {
-	version: "draft",
-	resolve_links: "url",
+const { data } = await apiClient.stories.get("config", {
+  query: { version: "draft",
+	resolve_links: "url" },
 });
+
+const story = data?.story;
+
+if (!story) {
+  return new Response(null, { status: 404 });
+}
 
 const headerMenu = data?.story?.content?.header_nav ?? [];
 

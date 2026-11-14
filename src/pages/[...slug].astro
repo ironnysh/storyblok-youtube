@@ -1,46 +1,24 @@
 ---
-import { useStoryblokApi, getPayload } from "@storyblok/astro";
-import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { StoryblokPreview } from "@storyblok/astro";
+import { apiClient, StoryblokBlock } from "../storyblok";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-export const prerender = true;
-
-export async function getStaticPaths() {
-	const storyblokApi = useStoryblokApi();
-	const { data } = await storyblokApi.get("cdn/links", {
-		version: "draft",
-	});
-
-	const links = data ? Object.values(data.links) : [];
-
-	return links
-		.filter((link) => !link.is_folder)
-		.map((link) => {
-			const slug = link.slug === "home" ? undefined : link.slug;
-			return {
-				params: { slug },
-			};
-		});
-}
-
-const payload = await getPayload({
-	locals: Astro.locals,
-});
 
 const { slug } = Astro.params;
 
-const storyblokApi = useStoryblokApi();
+const { data } = await apiClient.stories.get(slug || "home", {
+	query: {
+		version: "draft",
+		resolve_relations: "featured_articles.articles",
+	},
+});
+const story = data?.story;
 
-const story =
-	payload?.story ??
-	(
-		await storyblokApi.get(`cdn/stories/${slug || "home"}`, {
-			version: "draft",
-			resolve_relations: "featured_articles.articles",
-		})
-	).data.story;
+if (!story) {
+	return new Response(null, { status: 404 });
+}
 ---
 
 <BaseLayout>
-	<StoryblokComponent blok={story.content} />
+	<StoryblokBlock block={story.content} />
+	<StoryblokPreview />
 </BaseLayout>
