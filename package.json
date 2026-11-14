@@ -1,5 +1,5 @@
 {
-  "name": "clean-sb",
+  "name": "storyblok-youtube",
   "description": "",
   "version": "1.0.0",
   "author": "",
@@ -9,14 +9,18 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy",
+    "generate-types": "wrangler types"
   },
   "devDependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
-    "@astrojs/vercel": "^11.0.10",
-    "@storyblok/astro": "^10.3.1",
-    "astro": "^7.3.1",
+    "@astrojs/cloudflare": "^14.4.8",
+    "@storyblok/api-client": "^0.11.0",
+    "@storyblok/astro": "^11.0.0",
+    "astro": "^7.4.12",
     "vite": "^8.2.2",
-    "vite-plugin-mkcert": "^2.1.0"
+    "vite-plugin-mkcert": "^2.1.0",
+    "wrangler": "^4.162.0"
   }
 }
