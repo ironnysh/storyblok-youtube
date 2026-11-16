@@ -10,7 +10,7 @@ import Teaser from './storyblok/Teaser.astro';
 import Youtube from './storyblok/Youtube.astro';
 
 export const apiClient = createApiClient({
-	accessToken: import.meta.env.STORYBLOK_TOKEN,
+	accessToken: import.meta.env.STORYBLOK_DELIVERY_API_TOKEN,
 	inlineRelations: true,
 	region: 'eu',
 }).withTypes<Schema>();
