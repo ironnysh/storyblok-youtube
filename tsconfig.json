@@ -1,0 +1,5 @@
+{
+	"exclude": ["dist", ".vercel"],
+	"extends": "astro/tsconfigs/strict",
+	"include": [".astro/types.d.ts", "**/*"]
+}

@@ -1,38 +1,16 @@
 ---
-import {
-  storyblokEditable,
-  RichTextSchema,
-  renderRichText,
-} from "@storyblok/astro";
-import cloneDeep from "clone-deep";
+import type { StoryblokBlockComponentProps } from '@storyblok/astro';
+import type { Block } from '../schema/schema';
 
-const { blok } = Astro.props;
+type Props = StoryblokBlockComponentProps<Block<'article'>>;
 
-const mySchema = cloneDeep(RichTextSchema);
-const content = renderRichText(blok.content, {
-  schema: mySchema,
-  resolver: (component, blok) => {
-    switch (component) {
-      case "embed_youtube":
-        // console.log(`The output of the ${component} blok is:`, blok);
-        const player = `<lite-youtube videoid=${blok.youtube_url} title="${blok.youtube_title}"></lite-youtube>`;
-        const liteYT = player.replace("https://www.youtube.com/watch?v=", "");
-        // console.log(`The output of liteYT is: ${liteYT}`);
-        return `${liteYT}`;
-        break;
-      default:
-        return `<p class="warning">Can't display the <mark>${component}</mark> blok</p>`;
-    }
-  },
-});
+import { StoryblokRichText } from '../storyblok';
+
+const { block, editable } = Astro.props;
 ---
 
-<article {...storyblokEditable(blok)}>
-  <h2>{blok.title}</h2>
-  <p>{blok.lead}</p>
-  <Fragment set:html={content} />
+<article {...editable}>
+	<h2>{block.title}</h2>
+	<p>{block.lead}</p>
+	<StoryblokRichText document={block.content} />
 </article>
-
-<script>
-  import "../scripts/lite-yt-embed.js";
-</script>

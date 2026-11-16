@@ -1,21 +1,29 @@
 {
-  "name": "clean-sb",
-  "description": "",
-  "version": "1.0.0",
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "devDependencies": {
-    "@astro-community/astro-embed-youtube": "^0.5.6",
-    "@storyblok/astro": "^5.1.2",
-    "@vitejs/plugin-basic-ssl": "^1.2.0",
-    "astro": "^5.1.6",
-    "clone-deep": "^4.0.1",
-    "vite": "^6.0.7"
-  }
+	"author": "",
+	"description": "",
+	"devDependencies": {
+		"@astro-community/astro-embed-youtube": "^0.5.10",
+		"@astrojs/check": "^0.9.12",
+		"@astrojs/vercel": "^11.0.22",
+		"@storyblok/api-client": "^0.11.0",
+		"@storyblok/astro": "^11.0.0",
+		"@storyblok/schema": "^0.7.0",
+		"astro": "^7.4.12",
+		"storyblok": "^4.26.1",
+		"typescript": "^6.0.3",
+		"vite-plugin-mkcert": "^2.1.0"
+	},
+	"license": "ISC",
+	"name": "clean-sb",
+	"scripts": {
+		"astro": "astro",
+		"build": "astro build",
+		"dev": "astro dev",
+		"preview": "astro preview",
+		"schema:push": "storyblok schema push src/schema/schema.ts",
+		"schema:validate": "storyblok schema validate src/schema/schema.ts",
+		"start": "astro dev"
+	},
+	"type": "module",
+	"version": "1.0.0"
 }

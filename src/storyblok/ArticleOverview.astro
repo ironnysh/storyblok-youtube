@@ -1,0 +1,44 @@
+---
+import type { StoryblokBlockComponentProps } from '@storyblok/astro';
+import type { Block } from '../schema/schema';
+
+type Props = StoryblokBlockComponentProps<Block<'article_overview'>>;
+
+import { apiClient } from '../storyblok';
+
+const { block, editable } = Astro.props;
+
+const { data } = await apiClient.stories.list({
+	query: {
+		content_type: 'article',
+		starts_with: 'articles/',
+		version: 'draft',
+	},
+});
+
+const articles = (data?.stories ?? []).flatMap((story) =>
+	story.content.component === 'article'
+		? [
+				{
+					lead: story.content.lead,
+					slug: story.full_slug,
+					title: story.content.title,
+				},
+			]
+		: [],
+);
+---
+
+<main {...editable}>
+	<h1>{block.title}</h1>
+	<ul>
+		{articles.map((article) => (
+			<li>
+				<p>
+					<a href={`/${article.slug}`}>{article.title}</a>
+				</p>
+				<p>{article.lead}</p>
+			</li>
+		))}
+	</ul>
+</main>

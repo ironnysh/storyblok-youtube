@@ -20,3 +20,10 @@ npm-debug.log*
 
 # Visual Studio Code
 .vscode
+
+# Vercel build output
+.vercel/
+
+# Storyblok CLI logs and reports
+.storyblok/logs/
+.storyblok/reports/

@@ -1,0 +1,27 @@
+---
+import type { StoryblokBlockComponentProps } from '@storyblok/astro';
+import type { Block, Story } from '../schema/schema';
+
+type Props = StoryblokBlockComponentProps<Block<'featured_articles'>>;
+
+const { block, editable } = Astro.props;
+
+const articles = ((block.articles ?? []) as (string | Story)[]).filter(
+	(article): article is Story => typeof article === 'object',
+);
+---
+
+<section {...editable}>
+	<h2>Featured articles</h2>
+	<ul>
+		{articles.map((article) => (
+			<li>
+				<a href={`/${article.full_slug}`}>
+					{article.content.component === 'article'
+						? article.content.title
+						: article.name}
+				</a>
+			</li>
+		))}
+	</ul>
+</section>

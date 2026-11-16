@@ -1,0 +1,7 @@
+{
+	"extends": "//",
+	"html": {
+		"experimentalFullSupportEnabled": true
+	},
+	"root": false
+}

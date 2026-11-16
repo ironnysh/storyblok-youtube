@@ -1,11 +1,14 @@
 ---
-import { storyblokEditable } from "@storyblok/astro";
+import type { StoryblokBlockComponentProps } from '@storyblok/astro';
+import type { Block } from '../schema/schema';
 
-const { blok } = Astro.props;
+type Props = StoryblokBlockComponentProps<Block<'teaser'>>;
+
+const { block, editable } = Astro.props;
 ---
 
-<section {...storyblokEditable(blok)}>
-  <h2>
-    {blok.headline}
-  </h2>
+<section {...editable}>
+	<h2>
+		{block.headline}
+	</h2>
 </section>

@@ -1,6 +1,15 @@
 ---
-import { YouTube } from "@astro-community/astro-embed-youtube";
-const { blok } = Astro.props;
+import { YouTube } from '@astro-community/astro-embed-youtube';
+import type { StoryblokBlockComponentProps } from '@storyblok/astro';
+import type { Block } from '../schema/schema';
+
+type Props = StoryblokBlockComponentProps<Block<'embed_youtube'>>;
+
+const { block, editable } = Astro.props;
 ---
 
-<YouTube id={blok.youtube_url} title={blok.youtube_title} />
+<div {...editable}>
+	{block.youtube_url && (
+		<YouTube id={block.youtube_url} title={block.youtube_title ?? undefined} />
+	)}
+</div>
