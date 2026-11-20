@@ -10,7 +10,7 @@
 		"@storyblok/schema": "^0.7.0",
 		"astro": "^7.4.12",
 		"storyblok": "^4.26.1",
-		"typescript": "^6.0.3",
+		"typescript": "^7.0.2",
 		"vite-plugin-mkcert": "^2.1.0"
 	},
 	"license": "ISC",
